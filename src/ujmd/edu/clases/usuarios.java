@@ -5,6 +5,7 @@
  */
 package ujmd.edu.clases;
 
+import com.sun.media.jfxmediaimpl.MediaDisposer;
 import java.util.Scanner;
 
 /**
@@ -17,7 +18,7 @@ public class usuarios {
     private String usuario;
     private String clave;
     private String nivel;
-    int i;
+    int i=0;
 
     public usuarios() {
     }
@@ -62,37 +63,37 @@ public class usuarios {
 
     public void inicializar() {
         teclado = new Scanner(System.in);
-        System.out.print("Bienvenido al sistema de ventas Don Diego\n");
-        System.out.print("Favor ingresar credenciales\n");
+        System.out.println("Bienvenido al sistema de ventas Don Diego");
+        System.out.println("Favor ingresar credenciales");
         do {
-            System.out.print("Ingrese su usuario: ");
+            System.out.println("Ingrese su usuario: ");
             usuario = teclado.next();
-            System.out.print("Ingrese su clave: ");
+            System.out.println("Ingrese su clave: ");
             clave = teclado.next();
             if (usuario.isEmpty() || clave.isEmpty()) {
-                System.out.print("Error, Campos sin rellenar");
+                System.out.println("Error, Campos sin rellenar");
             } else {
                 if (usuario.equals("admin") && clave.equals("admin123")) {
-                    System.out.print("Bienvenido " + usuario);
-                    int i = 0;
+                    System.out.println("Bienvenido " + usuario);
+                    i++;
                     menu();
                 } else {
                     if (usuario.equals("vendedor") && clave.equals("vendedor123")) {
-                        System.out.print("Bienvenido " + usuario);
-                        i = 0;
+                        System.out.println("Bienvenido " + usuario);
+                        i++;
                         menu();
                     } else {
                         if (usuario.equals("invitado") && clave.equals("invitado123")) {
-                            System.out.print("Bienvenido " + usuario);
-                            i = 0;
+                            System.out.println("Bienvenido " + usuario);
+                            i++;
                             menu();
                         } else {
-                            System.out.print("Error, su Usuario o Contraseña son incorrectos");
+                            System.out.println("Error, su Usuario o Contraseña son incorrectos");
                         }
                     }
                 }
             }
-        } while (i > 0);
+        } while (i >= 0);
 
     }
 
@@ -116,24 +117,15 @@ public class usuarios {
                         catalogo1.imprimir();
                         break;
                     case 2:
-                        System.out.println("PRODUCTO    CANTIDAD");
-                        System.out.println("1- huevos       30");
-                        System.out.println("2- pollo         5");
-                        System.out.println("3- aceite       60");
-                        System.out.println("4- fósforos    100");
-                        System.out.println("5- dulces      500");
-                        System.out.println("6- margarina    20");
-                        System.out.println("7- jabón        25");
-                        System.out.println("8- carne        30");
-                        System.out.println("9- gaseosa     180");
-                        System.out.println("10- desechables 50");
-
+                        LeerArchivo prueba=new LeerArchivo();
+                        prueba.leer();
                         break;
                     case 3:
 
                         break;
                     case 4:
                         System.out.println("Cerrando sesión... ¡Regresa pronto!");
+                        System.exit(0);
                         break;
                     default:
                         System.out.println("Acción no valida");
